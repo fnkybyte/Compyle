@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Composer from './components/Composer';
 import Message from './components/Message';
 import Landing from './pages/landing';
-import { API_BASE } from './config';
 
 function ChatPage() {
   const [conversations, setConversations] = useState({});
@@ -69,11 +68,8 @@ function ChatPage() {
     }));
 
     try {
-      // Use API_BASE from config (strip trailing slash)
-      const base = (API_BASE || '').replace(/\/$/, '');
-      const endpoint = `${base}/api/v1/chat`;
-
-      const response = await fetch(endpoint, {
+      
+      const response = await fetch('/api/v1/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,7 +113,7 @@ function ChatPage() {
                   },
                 }));
               }
-            } catch (e) { /* ignore incomplete JSON */ }
+            } catch (e) { /* ignore */ }
           }
         }
       }
@@ -161,8 +157,8 @@ function ChatPage() {
         <header className="top-bar">
           <div style={{display:'flex',justifyContent:'space-between',width:'100%',alignItems:'center'}}>
             <div className="lp-brand">
-              <img src="/gemini-color.png" alt="logo" className="lp-logo" />
-              <div>Compyle-AI</div>
+              <img src="gemini-color.png" alt="logo" className="lp-logo" />
+              <div className='' >Compyle-AI</div>
             </div>
             <div style={{fontSize:'.9rem'}}><Link to="/" style={{color:'#666', textDecoration:'none'}}>← Home</Link></div>
           </div>
