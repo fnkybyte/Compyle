@@ -49,6 +49,44 @@ body {
   flex-grow: 1;
   padding: 20px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Message Styles */
+.message {
+  margin-bottom: 15px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message.user {
+  align-self: flex-end;
+}
+
+.message.assistant {
+  align-self: flex-start;
+}
+
+.message-content {
+  padding: 10px 15px;
+  border-radius: 18px;
+  background: #e9e9e9;
+  white-space: pre-wrap;
+}
+
+.message.user .message-content {
+  background: #007bff;
+  color: white;
+}
+
+.message-model-badge {
+  font-size: 0.75em;
+  color: #888;
+  margin-top: 5px;
+  padding-left: 5px;
 }
 
 /* Composer */
