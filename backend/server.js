@@ -69,7 +69,45 @@ apiRouter.get('/models', async (req, res) => {
   }
 });
 
-// TODO: Implement /chat endpoint
+// Chat endpoint
+apiRouter.post('/chat', async (req, res) => {
+  const { messages, provider, model, options } = req.body;
+
+  if (!messages || !model) {
+    return res.status(400).json({ error: 'Missing required fields: messages and model' });
+  }
+
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: `${provider}/${model}`.replace('undefined/', ''), // Handle cases where provider might not be passed
+        messages,
+        stream: true,
+        ...options,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`OpenRouter API responded with ${response.status}: ${errorBody}`);
+    }
+
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('Cache-Control', 'no-cache');
+
+    response.body.pipe(res);
+
+  } catch (error) {
+    console.error('Error proxying chat request to OpenRouter:', error);
+    res.status(502).json({ error: 'Failed to proxy chat request to upstream service.' });
+  }
+});
 
 app.use('/api/v1', apiRouter);
 
