@@ -32,7 +32,7 @@ function App() {
   // Auto-scroll to the bottom of the chat area when new messages are added
   useEffect(() => {
     if (chatAreaRef.current) {
-      chatArea-area.current.scrollTop = chatAreaRef.current.scrollHeight;
+      chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
     }
   }, [conversations, activeConversationId]);
 
