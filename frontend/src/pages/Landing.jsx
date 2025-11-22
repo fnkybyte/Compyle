@@ -38,6 +38,7 @@ export default function Landing() {
                         {/* Use the uploaded screenshots as preview montage */}
                         <img src="preview1.png" alt="Compyle preview 1" />
                         <img src="preview2.png" alt="Compyle preview 2" />
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Wm7OdY9c4ko?si=dVnO6ABxZg98GFGC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </header>
