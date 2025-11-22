@@ -1,3 +1,4 @@
+// backend/server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -7,22 +8,26 @@ const { promisify } = require('util');
 const streamPipeline = promisify(pipeline);
 
 const app = express();
+
+// PORT is used only for local development. Vercel provides its own runtime.
 const PORT = process.env.PORT || 3001;
 
 // Ensure fetch exists (Node 18+ has global fetch). Fallback to node-fetch if available.
 let fetchFn = global.fetch;
 if (!fetchFn) {
   try {
-    // node-fetch v3 is ESM default export when required from CommonJS
     const nf = require('node-fetch');
     fetchFn = nf && (nf.default || nf);
   } catch (e) {
-    console.error('No global fetch and node-fetch not installed. Streaming to OpenRouter will fail.', e);
+    console.error('No global fetch and node-fetch not installed. Streaming to OpenRouter may fail.', e);
   }
 }
 
-app.use(cors());
 app.use(express.json());
+
+// CORS: allow origins from env var CORS_ORIGIN (comma-separated). If not set, allow all (dev convenience).
+const allowed = (process.env.CORS_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
+app.use(cors({ origin: allowed.length ? allowed : true }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -102,7 +107,6 @@ apiRouter.post('/chat', async (req, res) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
-      // Do NOT set duplex or anything here for node-fetch env; keep simple
     });
 
     if (!upstream.ok) {
@@ -111,7 +115,7 @@ apiRouter.post('/chat', async (req, res) => {
       return res.status(502).json({ error: 'Upstream OpenRouter error', status: upstream.status, body: errBody });
     }
 
-    // If upstream content-type is JSON and not a stream, forward JSON directly
+    // If upstream content-type is JSON (non-stream), forward JSON directly
     const contentType = upstream.headers.get('content-type') || '';
     if (!contentType.includes('text/event-stream') && contentType.includes('application/json')) {
       const json = await upstream.json();
@@ -124,31 +128,31 @@ apiRouter.post('/chat', async (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     res.flushHeaders && res.flushHeaders(); // make sure headers are sent
 
-    // Use pipeline to forward upstream stream to response stream
-    // upstream.body should be a Node readable stream with node-fetch in Node env
     if (!upstream.body) {
       console.error('Upstream response has no body to stream');
       return res.status(502).json({ error: 'Upstream has no streaming body' });
     }
 
-    // Forward stream and handle finish / errors
     try {
       await streamPipeline(upstream.body, res);
-      // pipeline will end response automatically on upstream end
     } catch (streamErr) {
       console.error('Error while streaming from upstream to client:', streamErr);
-      // If client is still open, send a closing event or end
       try { res.end(); } catch (e) {}
     }
   } catch (error) {
     console.error('Error proxying chat request to OpenRouter:', error);
-    // include message for debugging but do not leak secrets
     res.status(502).json({ error: 'Failed to proxy chat request to upstream service.' });
   }
 });
 
 app.use('/api/v1', apiRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Local dev server only — Vercel will ignore this (it exports app instead).
+if (require.main === module) {
+  const port = process.env.PORT || 3001;
+  app.listen(port, () => {
+    console.log(`Server (dev) is running on port ${port}`);
+  });
+}
+
+module.exports = app;
