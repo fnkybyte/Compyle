@@ -4,8 +4,8 @@ const Composer = ({ onSendMessage }) => {
   // store model as an object { value, label }
   const [message, setMessage] = useState('');
   const [model, setModel] = useState({
-    value: 'x-ai/grok-4.1-fast:free',
-    label: 'Grok 4.1 fast'
+    value: 'openai/gpt-oss-20b:free',
+    label: 'ChatGPT 4.0'
   });
   const [temperature, setTemperature] = useState(0.7);
   const [maxLength, setMaxLength] = useState(2048);
@@ -70,11 +70,13 @@ const Composer = ({ onSendMessage }) => {
               setModel({ value: e.target.value, label });
             }}
           >
-            <option value="x-ai/grok-4.1-fast:free">Grok 4.1 fast</option>
-            <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash</option>
+            <option value="amazon/nova-2-lite-v1:free">Amazon Nova 2 Lite</option>
+            <option value="google/gemma-3-27b-it:free">Gemma 3.0 </option>
             <option value="openai/gpt-oss-20b:free">ChatGPT 4.0</option>
             <option value="z-ai/glm-4.5-air:free">GLM 4.5 Air</option>
             <option value="tngtech/deepseek-r1t2-chimera:free">DeepSeek R1T2 Chimera</option>
+            <option value="meta-llama/llama-guard-4-12b:free">Llama Guard 4</option>
+            <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash</option>
           </select>
         </div>
 
