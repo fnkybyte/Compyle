@@ -145,7 +145,7 @@ apiRouter.post('/chat', async (req, res) => {
   }
 });
 
-app.use('/api/v1', apiRouter);
+app.use('/api', apiRouter);
 
 // Local dev server only — Vercel will ignore this (it exports app instead).
 if (require.main === module) {
