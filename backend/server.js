@@ -55,7 +55,7 @@ apiRouter.get('/models', async (req, res) => {
   if (!fetchFn) return res.status(500).json({ error: 'Server fetch not available' });
 
   try {
-    const upstream = await fetchFn('https://openrouter.ai/api/v1/models', {
+    const upstream = await fetchFn('https://openrouter.ai/api/models', {
       headers: { Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}` },
     });
 
@@ -100,7 +100,7 @@ apiRouter.post('/chat', async (req, res) => {
   }
 
   try {
-    const upstream = await fetchFn('https://openrouter.ai/api/v1/chat/completions', {
+    const upstream = await fetchFn('https://openrouter.ai/api/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
