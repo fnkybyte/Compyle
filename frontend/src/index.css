@@ -495,3 +495,68 @@ body {
     background: var(--sidebar-bg, #fff);
   }
 }
+
+/* ==== Model Dropdown (Custom Select with Logos) ==== */
+
+.model-dropdown {
+  position: relative;
+  width: 230px;
+}
+
+.model-dropdown-selected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.model-dropdown-menu {
+  position: absolute;
+  bottom: 45px;         /* opens upward instead of downward */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  z-index: 20;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1); /* shadow adjusted for upward */
+}
+
+
+.model-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.model-dropdown-item:hover {
+  background: #f3f3f3;
+}
+
+.model-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ==== Dropdown Arrow Styling ==== */
+
+.dropdown-arrow {
+  margin-left: auto;
+  font-size: 14px;
+  color: #555;
+  transition: transform 0.25s ease;
+}
+
+/* rotate arrow when open */
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
