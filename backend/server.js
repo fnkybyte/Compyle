@@ -55,7 +55,7 @@ apiRouter.get('/models', async (req, res) => {
   if (!fetchFn) return res.status(500).json({ error: 'Server fetch not available' });
 
   try {
-    const upstream = await fetchFn('https://openrouter.ai/api/models', {
+    const upstream = await fetchFn('https://openrouter.ai/api/v1/models', {
       headers: { Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}` },
     });
 
@@ -100,7 +100,7 @@ apiRouter.post('/chat', async (req, res) => {
   }
 
   try {
-    const upstream = await fetchFn('https://openrouter.ai/api/chat/completions', {
+    const upstream = await fetchFn('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
@@ -145,7 +145,7 @@ apiRouter.post('/chat', async (req, res) => {
   }
 });
 
-app.use('/api', apiRouter);
+app.use('/api/v1', apiRouter);
 
 // Local dev server only — Vercel will ignore this (it exports app instead).
 if (require.main === module) {
