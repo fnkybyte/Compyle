@@ -6,7 +6,7 @@ const models = [
   { id: "openai/gpt-oss-20b:free", label: "ChatGPT 4.0", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" },
   { id: "z-ai/glm-4.5-air:free", label: "GLM 4.5 Air", logo: "https://img.icons8.com/external-black-fill-lafs/64/external-Golem-cryptocurrency-black-fill-lafs-2.png" },
   { id: "tngtech/deepseek-r1t2-chimera:free", label: "DeepSeek R1T2 Chimera", logo: "https://img.icons8.com/color/96/deepseek.png" },
-  { id: "meta-llama/llama-guard-4-12b:free", label: "Llama Guard 4", logo: "https://img.icons8.com/fluency/96/meta.png" },
+  { id: "meta-llama/llama-3.3-70b-instruct:free", label: "Llama Guard 4", logo: "https://img.icons8.com/fluency/96/meta.png" },
   { id: "google/gemini-2.0-flash-exp:free", label: "Gemini 2.0 Flash", logo: "https://img.icons8.com/fluency/96/bard.png" }
 ];
 

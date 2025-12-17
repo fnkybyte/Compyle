@@ -560,3 +560,97 @@ body {
 .dropdown-arrow.open {
   transform: rotate(180deg);
 }
+
+/* ===== Top Bar Header ===== */
+
+.top-bar {
+  height: 56px;
+  background: #f4f5f7;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.top-bar-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand */
+.lp-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.lp-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Right side actions */
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Home link */
+.top-bar-home {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #555;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.top-bar-home:hover {
+  background: #eaeaea;
+}
+
+/* User chip */
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  padding: 4px 10px 4px 6px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* Logout button */
+.logout-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #e6393c;
+}
