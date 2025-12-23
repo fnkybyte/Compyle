@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { useAuth } from "./context/AuthContext";
 import Login from "./components/Login";
-import Landing from "./pages/landing";
+import Landing from "./pages/Landing";
 import ChatPage from "./pages/ChatPage";
 
 export default function App() {
