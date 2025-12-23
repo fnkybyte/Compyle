@@ -7,8 +7,8 @@ export default function Landing() {
         <div className="landing-page dark-hero">
             <nav className="lp-nav">
                 <div className="lp-brand">
-                    <img src="/gemini-color.png" alt="logo" className="lp-logo" />
-                    <div className="lp-brand">Compyle</div>
+                    <img src="/logo.png" alt="logo" className="lp-logo" />
+                    <div className="lp-brand">Compyl</div>
                 </div>
 
                 <div className="lp-actions">
@@ -25,12 +25,12 @@ export default function Landing() {
                     </h1>
 
                     <p className="hero-sub">
-                        Compyle connects multiple LLM providers  — Grok, Gemini, GLm, DeepSeek and OpenAI — in a single minimal chat.
-                        No account required. Local chat history, fast streaming responses and model switching on the fly.
+                        Compyl connects multiple LLM providers  — Grok, Gemini, GLM, DeepSeek and OpenAI — in a single minimal chat.
+                        
                     </p>
 
                     <div className="hero-cta">
-                        <Link to="/chat" className="primary-btn">Open Chat — Try it now</Link>
+                        <Link to="/chat" className="primary-btn">Try it now</Link>
 
                     </div>
 
@@ -79,15 +79,15 @@ export default function Landing() {
             <footer className="landing-footer">
                 <div className="footer-inner">
                     <div className="lp-brand">
-                        <img src="/gemini-color.png" alt="logo" className="lp-logo" />
-                        <div className="lp-brand">Compyle</div>
+                        <img src="/logo.png" alt="logo" className="lp-logo" />
+                        <div className="lp-brand">Compyl</div>
                     </div>
                     <div className="links">
                         <a href="#features">Features</a>
                         <a href="/chat">Open Chat</a>
                         <a href="#docs">Docs</a>
                     </div>
-                    <div className="copyright">© {new Date().getFullYear()} Compyle</div>
+                    <div className="copyright">© {new Date().getFullYear()} Compyl</div>
                 </div>
             </footer>
         </div>

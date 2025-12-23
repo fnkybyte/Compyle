@@ -18,7 +18,7 @@ export default function Login() {
         
         
       <div className="login-card">
-        <h1 className="login-title">Welcome to Compyle</h1>
+        <h1 className="login-title">Welcome to Compyle AI</h1>
         <p className="login-subtitle">
           Sign in with Google to continue
         </p>
