@@ -19,7 +19,11 @@ export default function App() {
     <HashRouter>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
+        <Route
+          path="/"
+          element={user ? <Navigate to="/chat" /> : <Landing />}
+        />
         <Route path="/login" element={<Login />} />
 
         {/* Protected route */}
