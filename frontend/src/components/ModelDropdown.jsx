@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-
+// Model options with logos
+//Models form Openrouter Free tier ,Managed All in One API
 const models = [
   { id: "amazon/nova-2-lite-v1:free", label: "Nova 2 Lite", logo: "https://img.icons8.com/color/144/amazon.png" },
   { id: "google/gemma-3-27b-it:free", label: "Gemma 3.0", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
@@ -29,6 +30,9 @@ export default function ModelDropdown({ selected, onSelect }) {
     return () => document.removeEventListener("mousedown", handleOutside);
   }, []);
 
+
+
+  //Model Dropdown Menu list 
   return (
     <div className="model-dropdown" ref={dropdownRef}>
       {/* Selected Display */}
