@@ -1,13 +1,12 @@
-# Compyle
+# Compyl
 
-A lightweight, local-first web application for chatting with multiple large-language models via OpenRouter. No signups, no accounts, just your conversation history, stored locally in your browser.
+A lightweight, local-first web application for chatting with multiple large-language models via OpenRouter.
 
 ## Features
 
--   **Local-First**: All conversation history is stored in your browser'''s localStorage. No data is stored on the server.
+-   **Local-First**: All conversation history is stored in your User Account in Supabase Database. No data is stored on the server.
 -   **Multi-Model**: Switch between different LLM providers and models (OpenAI, Anthropic, Gemini, etc.) mid-conversation.
 -   **Streaming Responses**: See the AI'''s response in real-time as it'''s being generated.
--   **No Authentication**: Start chatting immediately without needing an account.
 -   **Minimalist UI**: A clean, simple, and responsive chat interface.
 
 ## Tech Stack
