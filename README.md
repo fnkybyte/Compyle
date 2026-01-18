@@ -1,6 +1,6 @@
 # Compyl
 
-A lightweight, local-first web application for chatting with multiple large-language models via OpenRouter.
+A lightweight, full end to end login to Chat Data Storage AI-Chat bot to work with multiple large-language models via OpenRouter, connecting multiple model in a same chat base with previous context of chat.
 
 ## Features
 
@@ -13,6 +13,7 @@ A lightweight, local-first web application for chatting with multiple large-lang
 
 -   **Frontend**: React (Vite)
 -   **Backend**: Node.js (Express)
+-   **Auth & Database**: Supabase(It combines user auth with the data storaage along the chat space using uuid making each chat of the user seperate form each other and no other user has authority to acess to other user chat except admin.)
 
 ## Setup Instructions
 
